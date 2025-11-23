@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageSlider } from "./ImageSlider";
 import { ShoppingCart, Eye } from "lucide-react";
 
 export function ProductCard({ product, onAddToCart, onViewDetails }) {
@@ -13,10 +13,10 @@ export function ProductCard({ product, onAddToCart, onViewDetails }) {
     <Card className="group hover:shadow-lg transition-all duration-300 border-orange-100 hover:border-orange-200">
       <CardContent className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
-          <ImageWithFallback
-            src={product.image}
+          <ImageSlider
+            images={Array.isArray(product.images) ? product.images : [product.image]}
             alt={product.name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-[300px] object-cover group-hover:scale-105 transition-transform duration-300"
           />
 
           {discount > 0 && (

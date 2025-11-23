@@ -9,76 +9,228 @@ import { Footer } from "./components/Footer";
 import { Toaster } from "./components/ui/sonner";
 import { toast } from "sonner";
 
-// Sample product data
+// Updated spice collection data
 const sampleProducts = [
   {
     id: "1",
-    name: "Premium Nigerian Turmeric Powder",
-    price: 3500,
-    originalPrice: 4200,
-    image: "https://images.unsplash.com/photo-1634114627043-9a2abf455494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwc3BpY2VzJTIwdHVybWVyaWMlMjBwYXByaWthfGVufDF8fHx8MTc1NzU3OTA4NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Pure, sun-dried turmeric from Nigerian farms. Rich in curcumin with powerful anti-inflammatory properties.",
+    name: "Black Pepper",
+    price: 3000,
+    image: "/spices/BlackPepper-70g.jpg",
+    images: [
+      "/spices/BlackPepper-70g.jpg",
+      "/spices/BlackPepper-70g-3.jpg",
+      "/spices/BlackPepper-70g-4.jpg"
+    ],
+    description: "Premium quality black pepper with bold, pungent flavor. Essential for every kitchen.",
     origin: "Nigeria",
-    weight: "250g",
-    inStock: true,
-    tags: ["Anti-inflammatory", "Organic", "Ground"]
-  },
-  {
-    id: "2",
-    name: "Authentic Cardamom Pods",
-    price: 7800,
-    image: "https://images.unsplash.com/photo-1624351251625-cf02b018223c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXJkYW1vbSUyMGNpbm5hbW9uJTIwc3RpY2tzfGVufDF8fHx8MTc1NzU3OTA4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Premium green cardamom pods with intense aroma. Perfect for teas, desserts, and savory dishes.",
-    origin: "Ethiopia",
-    weight: "100g",
-    inStock: true,
-    tags: ["Whole Spice", "Aromatic", "Premium"]
-  },
-  {
-    id: "3",
-    name: "Fresh Ground Black Pepper",
-    price: 4200,
-    originalPrice: 5000,
-    image: "https://images.unsplash.com/photo-1621800971835-ba546089bd4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMHBlcHBlciUyMGdpbmdlciUyMHJvb3R8ZW58MXx8fHwxNzU3NTc5MDg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Freshly ground black pepper with bold, pungent flavor. Essential for every African kitchen.",
-    origin: "Ghana",
-    weight: "200g",
+    weight: "70g",
     inStock: true,
     tags: ["Ground", "Pungent", "Essential"]
   },
   {
-    id: "4",
-    name: "Traditional Curry Powder Blend",
-    price: 5500,
-    image: "https://images.unsplash.com/photo-1650559347569-09a6bbed5f28?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXJyeSUyMHBvd2RlciUyMHNwaWNlJTIwYmxlbmR8ZW58MXx8fHwxNzU3NTc5MDg3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "A perfect blend of 12 traditional African spices. Adds authentic flavor to stews and rice dishes.",
-    origin: "Morocco",
-    weight: "300g",
+    id: "2",
+    name: "Ginger Powder",
+    price: 3500,
+    image: "/spices/GingerPowder-70g.jpg",
+    images: [
+      "/spices/GingerPowder-70g.jpg",
+      "/spices/GingerPowder-70g-3.jpg",
+      "/spices/GingerPowder-70g-4.jpg"
+    ],
+    description: "Freshly ground ginger with intense aroma and warming properties. Perfect for teas and savory dishes.",
+    origin: "Nigeria",
+    weight: "70g",
     inStock: true,
-    tags: ["Blend", "Traditional", "Complex"]
+    tags: ["Ground", "Aromatic", "Warming"]
+  },
+  {
+    id: "3",
+    name: "Garlic Powder",
+    price: 3000,
+    image: "/spices/GarlicPowder-70g.jpg",
+    images: [
+      "/spices/GarlicPowder-70g.jpg",
+      "/spices/GarlicPowder-70g-3.jpg",
+      "/spices/GarlicPowder-70g-4.jpg"
+    ],
+    description: "Rich, savory garlic powder with robust flavor. Adds depth to any dish.",
+    origin: "Nigeria",
+    weight: "70g",
+    inStock: true,
+    tags: ["Ground", "Savory", "Essential"]
+  },
+  {
+    id: "4",
+    name: "Cinnamon Powder",
+    price: 3000,
+    image: "/spices/CinnamonPowder-70g.jpg",
+    images: [
+      "/spices/CinnamonPowder-70g.jpg",
+      "/spices/CinnamonPowder-70g-3.jpg",
+      "/spices/CinnamonPowder-70g-4.jpg",
+      "/spices/CinnamonPowder-70g-5.jpg"
+    ],
+    description: "Sweet and warming cinnamon with intense aroma. Perfect for desserts and beverages.",
+    origin: "Nigeria",
+    weight: "70g",
+    inStock: true,
+    tags: ["Ground", "Sweet", "Warming"]
   },
   {
     id: "5",
-    name: "Coriander & Cumin Seed Mix",
-    price: 3800,
-    image: "https://images.unsplash.com/photo-1639322752435-9c248abfacdc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb3JpYW5kZXIlMjBjdW1pbiUyMHNlZWRzfGVufDF8fHx8MTc1NzU3OTA4OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Hand-selected coriander and cumin seeds. Perfect for toasting and grinding fresh spice blends.",
-    origin: "Kenya",
-    weight: "150g",
-    inStock: false,
-    tags: ["Whole Seeds", "Toast & Grind", "Aromatic"]
+    name: "Bayleaf",
+    price: 1800,
+    image: "/spices/BayLeaf.jpg",
+    images: [
+      "/spices/BayLeaf.jpg",
+      "/spices/BayLeaf-100g-3.jpg",
+      "/spices/BayLeaf-100g-4.jpg",
+      "/spices/BayLeaf-100g-6.jpg"
+    ],
+    description: "Fragrant bay leaves with subtle bitterness. Essential for soups, stews, and braises.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Whole Spice", "Aromatic", "Essential"]
   },
   {
     id: "6",
-    name: "Smoked Paprika Powder",
-    price: 4800,
-    originalPrice: 5500,
-    image: "https://images.unsplash.com/photo-1634114627043-9a2abf455494?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwc3BpY2VzJTIwdHVybWVyaWMlMjBwYXByaWthfGVufDF8fHx8MTc1NzU3OTA4NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Rich, smoky paprika with deep red color. Adds warmth and complexity to meat and vegetable dishes.",
-    origin: "South Africa",
-    weight: "180g",
+    name: "Coriander",
+    price: 1800,
+    image: "/spices/CorianderPowder-70g.jpg",
+    images: [
+      "/spices/CorianderPowder-70g.jpg",
+      "/spices/CorianderPowder-100g-4.jpg",
+      "/spices/CorrianderPowder-100g-3.jpg"
+    ],
+    description: "Freshly ground coriander with citrusy, slightly sweet flavor. Perfect for curries and marinades.",
+    origin: "Nigeria",
+    weight: "100g",
     inStock: true,
-    tags: ["Smoky", "Ground", "Rich Color"]
+    tags: ["Ground", "Citrusy", "Versatile"]
+  },
+  {
+    id: "7",
+    name: "Suya Spice",
+    price: 1000,
+    image: "/spices/SuyaSpice-70g.jpg",
+    images: [
+      "/spices/SuyaSpice-70g.jpg",
+      "/spices/SuyaSpice-70g-3.jpg",
+      "/spices/SuyaSpice-70g-4.jpg"
+    ],
+    description: "Authentic Nigerian suya spice blend with perfect heat and flavor balance. Ideal for grilled meats.",
+    origin: "Nigeria",
+    weight: "70g",
+    inStock: true,
+    tags: ["Blend", "Spicy", "Traditional"]
+  },
+  {
+    id: "8",
+    name: "Paprika",
+    price: 2700,
+    image: "/spices/Paprika-100g.jpg",
+    images: [
+      "/spices/Paprika-100g.jpg",
+      "/spices/Paprika-100g-2.jpg",
+      "/spices/Paprika-100g-3.jpg",
+      "/spices/Paprika-100g-4.jpg",
+      "/spices/Paprika-100g-5.jpg",
+      "/spices/Paprika-100g-6.jpg",
+      "/spices/Paprika-100g-7.jpg",
+      "/spices/Paprika-100g-8.jpg",
+      "/spices/Paprika-100g-9.jpg",
+      "/spices/Paprika-100g-10.jpg",
+      "/spices/Paprika-100g-11.jpg"
+    ],
+    description: "Rich, vibrant paprika with deep red color and mild sweetness. Adds color and flavor to any dish.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Ground", "Sweet", "Rich Color"]
+  },
+  {
+    id: "9",
+    name: "All Purpose",
+    price: 2700,
+    image: "/spices/AllPurposeSpice.jpg",
+    images: [
+      "/spices/AllPurposeSpice.jpg",
+      "/spices/AllPurposeSpice-100g.jpg",
+      "/spices/AllPurposeSpice-100g-2.jpg",
+      "/spices/AllPurposeSpice-100g-3.jpg",
+      "/spices/AllPurposeSpice-100g-5.jpg",
+      "/spices/AllPurposeSpice-100g-6.jpg",
+      "/spices/AllPurposeSpice-100g-10.jpg",
+      "/spices/AllPurposeSpice-100g-11.jpg",
+      "/spices/AllPurposeSpice-100g-12.jpg"
+    ],
+    description: "Versatile all-purpose spice blend with balanced flavors. Perfect for everyday cooking.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Blend", "Versatile", "Balanced"]
+  },
+  {
+    id: "10",
+    name: "Curry Powder",
+    price: 2700,
+    image: "/spices/CurrySpice-100g.jpg",
+    images: [
+      "/spices/CurrySpice-100g.jpg",
+      "/spices/CurrySpice-100g-2.jpg",
+      "/spices/CurrySpice-100g-3.jpg",
+      "/spices/CurrySpice-100g-4.jpg",
+      "/spices/CurrySpice-100g-8.jpg",
+      "/spices/CurrySpice-100g-9.jpg"
+    ],
+    description: "Traditional curry powder blend with complex flavors. Adds authentic taste to curries and stews.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Blend", "Complex", "Traditional"]
+  },
+  {
+    id: "11",
+    name: "Herb Mix",
+    price: 2700,
+    image: "/spices/All-Spices.jpg",
+    images: [
+      "/spices/All-Spices.jpg",
+      "/spices/All-Spices-2.jpg",
+      "/spices/All-Spices-3.jpg"
+    ],
+    description: "Premium herb seasoning blend with Mediterranean flavors. Perfect for enhancing vegetables and meats.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Blend", "Herbal", "Mediterranean"]
+  },
+  {
+    id: "12",
+    name: "Pepper Soup",
+    price: 3000,
+    image: "/spices/PeppersoupSpice.jpg",
+    images: [
+      "/spices/PeppersoupSpice.jpg",
+      "/spices/CurrySpice-PepperSoupSpice-100g.jpg",
+      "/spices/CurrySpice-PepperSoupSpice-100g-2.jpg",
+      "/spices/Paprika-PepperSoupSpice-100g.jpg",
+      "/spices/Paprika-Seafood-Peppersoup-Bayleaf-Coriander-Curry-100g.jpg",
+      "/spices/Paprika-PeppersoupSpice-100g-2.jpg",
+      "/spices/PepperSoupSpice-100g-2.jpg",
+      "/spices/PepperSoupSpice-100g-3.jpg",
+      "/spices/PepperSoupSpice-100g-4.jpg",
+      "/spices/PepperSoupSpice-100g-7.jpg",
+      "/spices/PepperSoupSpice-100g-13.jpg",
+      "/spices/PepperSoupSpice-100g-edited.png",
+      "/spices/PepperSoupSpice-100g-transparentbg.png"
+    ],
+    description: "Spicy pepper soup spice blend with authentic Nigerian flavors. Perfect for traditional pepper soup.",
+    origin: "Nigeria",
+    weight: "100g",
+    inStock: true,
+    tags: ["Blend", "Spicy", "Traditional"]
   }
 ];
 

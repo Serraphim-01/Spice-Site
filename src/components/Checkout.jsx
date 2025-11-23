@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Separator } from "./ui/separator";
 import { Badge } from "./ui/badge";
 import { useState } from "react";
-import { CreditCard, Truck, Upload, CheckCircle } from "lucide-react";
+import { CreditCard, Truck, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete }) {
@@ -24,19 +24,43 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
     state: "",
     notes: ""
   });
-  const [proofFile, setProofFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setProofFile(file);
-      toast.success("Receipt uploaded successfully!");
+  const sendOrderToWhatsApp = (orderData) => {
+    // Format the order details for WhatsApp message
+    let message = `*New Order from AfriSpice*\n\n`;
+    message += `*Customer Details:*\n`;
+    message += `Name: ${orderData.firstName} ${orderData.lastName}\n`;
+    message += `Email: ${orderData.email}\n`;
+    message += `Phone: ${orderData.phone}\n`;
+    message += `Address: ${orderData.address}, ${orderData.city}, ${orderData.state}\n\n`;
+    
+    message += `*Order Items:*\n`;
+    orderData.cartItems.forEach(item => {
+      message += `- ${item.name} × ${item.quantity} = ₦${(item.price * item.quantity).toLocaleString()}\n`;
+    });
+    
+    message += `\n*Payment Method:* ${orderData.paymentMethod}\n`;
+    message += `*Total Amount:* ₦${orderData.total.toLocaleString()}\n\n`;
+    
+    if (orderData.notes) {
+      message += `*Special Notes:* ${orderData.notes}\n\n`;
     }
+    
+    message += `*Order ID:* #AS${Date.now().toString().slice(-6)}\n`;
+    
+    // Replace special characters for URL encoding
+    const encodedMessage = encodeURIComponent(message);
+    
+    // WhatsApp business number (replace with actual business number)
+    const whatsappNumber = "+2348133631762";
+    
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
   };
 
   const handleSubmitOrder = async () => {
@@ -45,6 +69,16 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
     // Simulate order processing
     await new Promise(resolve => setTimeout(resolve, 2000));
 
+    // Send order details to WhatsApp
+    const orderData = {
+      ...formData,
+      cartItems,
+      total,
+      paymentMethod
+    };
+    
+    sendOrderToWhatsApp(orderData);
+
     setStep(3);
     setIsSubmitting(false);
 
@@ -52,6 +86,17 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
       onOrderComplete();
       onClose();
       setStep(1);
+      // Reset form data
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        address: "",
+        city: "",
+        state: "",
+        notes: ""
+      });
       toast.success("Order placed successfully! We'll contact you soon.");
     }, 3000);
   };
@@ -220,7 +265,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                         Opay Bank Transfer
                       </Label>
                       <p className="text-sm text-gray-500 mt-1">
-                        Transfer to our Opay account and upload proof of payment
+                        Transfer to our Opay account and send proof of payment via WhatsApp
                       </p>
                     </div>
                   </div>
@@ -248,24 +293,10 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                       <p><strong>Bank:</strong> Opay</p>
                       <p><strong>Amount:</strong> ₦{total.toLocaleString()}</p>
                     </div>
-
-                    <div className="mt-4">
-                      <Label htmlFor="proof">Upload Payment Proof</Label>
-                      <div className="mt-2 flex items-center gap-3">
-                        <Input
-                          id="proof"
-                          type="file"
-                          accept="image/*,.pdf"
-                          onChange={handleFileUpload}
-                          className="border-orange-200"
-                        />
-                        <Upload className="h-4 w-4 text-gray-400" />
-                      </div>
-                      {proofFile && (
-                        <Badge variant="outline" className="mt-2 text-green-600 border-green-200">
-                          ✓ {proofFile.name}
-                        </Badge>
-                      )}
+                    <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <p className="text-xs text-yellow-700">
+                        <strong>Note:</strong> After making payment, please send your receipt to our WhatsApp number with your order ID.
+                      </p>
                     </div>
                   </div>
                 )}
@@ -279,7 +310,6 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
               <Button
                 className="flex-1 bg-orange-600 hover:bg-orange-700 text-white"
                 onClick={handleSubmitOrder}
-                disabled={paymentMethod === "opay" && !proofFile}
               >
                 Place Order
               </Button>
@@ -302,6 +332,29 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                   <p className="text-gray-600">
                     Thank you for your order. We'll contact you within 24 hours to confirm delivery details.
                   </p>
+                  {paymentMethod === "opay" && (
+                    <div className="mt-4 p-4 bg-yellow-50 rounded-lg text-left">
+                      <h4 className="font-medium text-yellow-800 mb-2">Next Steps:</h4>
+                      <ol className="list-decimal list-inside space-y-1 text-sm text-yellow-700">
+                        <li>Transfer ₦{total.toLocaleString()} to our Opay account</li>
+                        <li>Take a screenshot of your payment receipt</li>
+                        <li>
+                          Send the receipt to our WhatsApp number: 
+                          <Button 
+                            variant="link" 
+                            className="p-0 h-auto text-yellow-800 underline ml-1"
+                            onClick={() => {
+                              const whatsappNumber = "+2348123456789";
+                              window.open(`https://wa.me/${whatsappNumber}`, '_blank');
+                            }}
+                          >
+                            +234 812 345 6789
+                          </Button>
+                        </li>
+                        <li>Include your Order ID: #AS{Date.now().toString().slice(-6)}</li>
+                      </ol>
+                    </div>
+                  )}
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
                   <p className="text-sm text-green-700">

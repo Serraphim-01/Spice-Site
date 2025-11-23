@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageSlider } from "./ImageSlider";
 import { ShoppingCart, Star, Shield, Truck, Award } from "lucide-react";
 
 export function ProductModal({ product, isOpen, onClose, onAddToCart }) {
@@ -22,8 +22,8 @@ export function ProductModal({ product, isOpen, onClose, onAddToCart }) {
           {/* Product Image */}
           <div className="space-y-4">
             <div className="relative aspect-square rounded-lg overflow-hidden">
-              <ImageWithFallback
-                src={product.image}
+              <ImageSlider
+                images={Array.isArray(product.images) ? product.images : [product.image]}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
