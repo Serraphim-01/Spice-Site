@@ -1,0 +1,21 @@
+{
+  "short_name": "SpiceSite",
+  "name": "Spice Site - Premium Quality Spices",
+  "icons": [
+    {
+      "src": "/spice-site-social-preview.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/spices/All-Spices.jpg",
+      "sizes": "2948x2948",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "description": "Discover our premium collection of spices and seasonings. Enhance your culinary creations with our carefully sourced, high-quality spices."
+}

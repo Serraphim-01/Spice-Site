@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spice-site.example.com/sitemap.xml
