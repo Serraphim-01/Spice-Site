@@ -11,9 +11,11 @@ export function Header({ cartItemCount, onCartClick }) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-xl text-orange-800 font-bold">
-              Afri<span className="text-red-600">Spice</span>
-            </h1>
+            <img 
+              src="/logo/LOGO-1-removebg.png" 
+              alt="RichJoash Logo" 
+              className="h-16 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}

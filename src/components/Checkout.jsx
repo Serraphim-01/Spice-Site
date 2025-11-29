@@ -32,7 +32,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
 
   const sendOrderToWhatsApp = (orderData) => {
     // Format the order details for WhatsApp message
-    let message = `*New Order from AfriSpice*\n\n`;
+    let message = `*New Order from RichJoash*\n\n`;
     message += `*Customer Details:*\n`;
     message += `Name: ${orderData.firstName} ${orderData.lastName}\n`;
     message += `Email: ${orderData.email}\n`;
@@ -51,7 +51,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
       message += `*Special Notes:* ${orderData.notes}\n\n`;
     }
     
-    message += `*Order ID:* #AS${Date.now().toString().slice(-6)}\n`;
+    message += `*Order ID:* #RJ${Date.now().toString().slice(-6)}\n`;
     
     // Replace special characters for URL encoding
     const encodedMessage = encodeURIComponent(message);
@@ -288,7 +288,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                   <div className="mt-4 p-4 bg-orange-50 rounded-lg">
                     <h4 className="text-sm mb-2">Opay Transfer Details:</h4>
                     <div className="space-y-1 text-sm text-gray-700">
-                      <p><strong>Account Name:</strong> AfriSpice Limited</p>
+                      <p><strong>Account Name:</strong> RichJoash Limited</p>
                       <p><strong>Account Number:</strong> 7012345678</p>
                       <p><strong>Bank:</strong> Opay</p>
                       <p><strong>Amount:</strong> ₦{total.toLocaleString()}</p>
@@ -351,14 +351,14 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                             +234 812 345 6789
                           </Button>
                         </li>
-                        <li>Include your Order ID: #AS{Date.now().toString().slice(-6)}</li>
+                        <li>Include your Order ID: #RJ{Date.now().toString().slice(-6)}</li>
                       </ol>
                     </div>
                   )}
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
                   <p className="text-sm text-green-700">
-                    Order ID: #AS{Date.now().toString().slice(-6)}
+                    Order ID: #RJ{Date.now().toString().slice(-6)}
                   </p>
                 </div>
               </>

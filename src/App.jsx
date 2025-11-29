@@ -15,11 +15,11 @@ const sampleProducts = [
     id: "1",
     name: "Black Pepper",
     price: 3000,
-    image: "/spices/BlackPepper-70g.jpg",
+    image: "spices/spices-main/BlackPepper.png",
     images: [
+      "spices/spices-main/BlackPepper.png",
       "/spices/BlackPepper-70g.jpg",
       "/spices/BlackPepper-70g-3.jpg",
-      "/spices/BlackPepper-70g-4.jpg"
     ],
     description: "Premium quality black pepper with bold, pungent flavor. Essential for every kitchen.",
     origin: "Nigeria",
@@ -31,10 +31,10 @@ const sampleProducts = [
     id: "2",
     name: "Ginger Powder",
     price: 3500,
-    image: "/spices/GingerPowder-70g.jpg",
+    image: "spices/spices-main/GingerPowder.png",
     images: [
+      "spices/spices-main/GingerPowder.png",
       "/spices/GingerPowder-70g.jpg",
-      "/spices/GingerPowder-70g-3.jpg",
       "/spices/GingerPowder-70g-4.jpg"
     ],
     description: "Freshly ground ginger with intense aroma and warming properties. Perfect for teas and savory dishes.",
@@ -47,10 +47,10 @@ const sampleProducts = [
     id: "3",
     name: "Garlic Powder",
     price: 3000,
-    image: "/spices/GarlicPowder-70g.jpg",
+    image: "spices/spices-main/GarlicPowder.png",
     images: [
+      "spices/spices-main/GarlicPowder.png",
       "/spices/GarlicPowder-70g.jpg",
-      "/spices/GarlicPowder-70g-3.jpg",
       "/spices/GarlicPowder-70g-4.jpg"
     ],
     description: "Rich, savory garlic powder with robust flavor. Adds depth to any dish.",
@@ -63,12 +63,11 @@ const sampleProducts = [
     id: "4",
     name: "Cinnamon Powder",
     price: 3000,
-    image: "/spices/CinnamonPowder-70g.jpg",
+    image: "/spices/CinnamonPowder-70g-5.jpg",
     images: [
-      "/spices/CinnamonPowder-70g.jpg",
+      "/spices/CinnamonPowder-70g-5.jpg",
       "/spices/CinnamonPowder-70g-3.jpg",
-      "/spices/CinnamonPowder-70g-4.jpg",
-      "/spices/CinnamonPowder-70g-5.jpg"
+
     ],
     description: "Sweet and warming cinnamon with intense aroma. Perfect for desserts and beverages.",
     origin: "Nigeria",
@@ -97,10 +96,10 @@ const sampleProducts = [
     id: "6",
     name: "Coriander",
     price: 1800,
-    image: "/spices/CorianderPowder-70g.jpg",
+    image: "spices/spices-main/CorianderPowder.png",
     images: [
+      "spices/spices-main/CorianderPowder.png",
       "/spices/CorianderPowder-70g.jpg",
-      "/spices/CorianderPowder-100g-4.jpg",
       "/spices/CorrianderPowder-100g-3.jpg"
     ],
     description: "Freshly ground coriander with citrusy, slightly sweet flavor. Perfect for curries and marinades.",
@@ -113,8 +112,9 @@ const sampleProducts = [
     id: "7",
     name: "Suya Spice",
     price: 1000,
-    image: "/spices/SuyaSpice-70g.jpg",
+    image: "spices/spices-main/SuyaSpice.png",
     images: [
+      "spices/spices-main/SuyaSpice.png",
       "/spices/SuyaSpice-70g.jpg",
       "/spices/SuyaSpice-70g-3.jpg",
       "/spices/SuyaSpice-70g-4.jpg"
@@ -131,17 +131,11 @@ const sampleProducts = [
     price: 2700,
     image: "/spices/Paprika-100g.jpg",
     images: [
-      "/spices/Paprika-100g.jpg",
+      "/spices/spices-main/Paprika.png",
       "/spices/Paprika-100g-2.jpg",
-      "/spices/Paprika-100g-3.jpg",
-      "/spices/Paprika-100g-4.jpg",
-      "/spices/Paprika-100g-5.jpg",
       "/spices/Paprika-100g-6.jpg",
-      "/spices/Paprika-100g-7.jpg",
       "/spices/Paprika-100g-8.jpg",
-      "/spices/Paprika-100g-9.jpg",
       "/spices/Paprika-100g-10.jpg",
-      "/spices/Paprika-100g-11.jpg"
     ],
     description: "Rich, vibrant paprika with deep red color and mild sweetness. Adds color and flavor to any dish.",
     origin: "Nigeria",
@@ -155,15 +149,10 @@ const sampleProducts = [
     price: 2700,
     image: "/spices/AllPurposeSpice.jpg",
     images: [
-      "/spices/AllPurposeSpice.jpg",
-      "/spices/AllPurposeSpice-100g.jpg",
       "/spices/AllPurposeSpice-100g-2.jpg",
       "/spices/AllPurposeSpice-100g-3.jpg",
       "/spices/AllPurposeSpice-100g-5.jpg",
-      "/spices/AllPurposeSpice-100g-6.jpg",
       "/spices/AllPurposeSpice-100g-10.jpg",
-      "/spices/AllPurposeSpice-100g-11.jpg",
-      "/spices/AllPurposeSpice-100g-12.jpg"
     ],
     description: "Versatile all-purpose spice blend with balanced flavors. Perfect for everyday cooking.",
     origin: "Nigeria",
@@ -177,12 +166,11 @@ const sampleProducts = [
     price: 2700,
     image: "/spices/CurrySpice-100g.jpg",
     images: [
-      "/spices/CurrySpice-100g.jpg",
+      "/spices/spices-main/CurrySpice.png",
       "/spices/CurrySpice-100g-2.jpg",
       "/spices/CurrySpice-100g-3.jpg",
       "/spices/CurrySpice-100g-4.jpg",
       "/spices/CurrySpice-100g-8.jpg",
-      "/spices/CurrySpice-100g-9.jpg"
     ],
     description: "Traditional curry powder blend with complex flavors. Adds authentic taste to curries and stews.",
     origin: "Nigeria",
@@ -192,19 +180,50 @@ const sampleProducts = [
   },
   {
     id: "11",
-    name: "Herb Mix",
-    price: 2700,
-    image: "/spices/All-Spices.jpg",
+    name: "100g Herb Mix",
+    price: 10000,
+    image: "/spices/spices-main/BigSpices.png",
     images: [
-      "/spices/All-Spices.jpg",
-      "/spices/All-Spices-2.jpg",
-      "/spices/All-Spices-3.jpg"
+      "/spices/spices-main/BigSpices.png",
+      "/spices/100g-Spices-3.jpg",
+      "/spices/100g-spices.jpg"
     ],
-    description: "Premium herb seasoning blend with Mediterranean flavors. Perfect for enhancing vegetables and meats.",
+    description: "Rich and robust herb blend with concentrated Mediterranean flavors. Ideal for hearty dishes and larger portions.",
     origin: "Nigeria",
     weight: "100g",
     inStock: true,
-    tags: ["Blend", "Herbal", "Mediterranean"]
+    tags: ["Blend", "Concentrated", "Hearty"]
+  },
+  {
+    id: "14",
+    name: "All Herb Mix",
+    price: 2700,
+    image: "/spices/spices-main/AllSpices.png",
+    images: [
+      "/spices/spices-main/AllSpices.png",
+      "/spices/All-Spices-3.jpg"
+    ],
+    description: "Balanced herb seasoning blend with Mediterranean flavors. Versatile for all types of dishes.",
+    origin: "Nigeria",
+    weight: "70g & 100g",
+    inStock: true,
+    tags: ["Blend", "Versatile", "Balanced"]
+  },
+  {
+    id: "13",
+    name: "70g Herb Mix",
+    price: 2700,
+    image: "/spices/spices-main/SmallSpices.png",
+    images: [
+      "/spices/spices-main/SmallSpices.png",
+      "/spices/70g-spices-3.jpg",
+      "/spices/70g-Spices-4.jpg"
+    ],
+    description: "Light and aromatic herb blend with delicate flavors. Perfect for everyday cooking and lighter meals.",
+    origin: "Nigeria",
+    weight: "70g",
+    inStock: true,
+    tags: ["Blend", "Aromatic", "Everyday"]
   },
   {
     id: "12",
@@ -212,19 +231,11 @@ const sampleProducts = [
     price: 3000,
     image: "/spices/PeppersoupSpice.jpg",
     images: [
-      "/spices/PeppersoupSpice.jpg",
-      "/spices/CurrySpice-PepperSoupSpice-100g.jpg",
-      "/spices/CurrySpice-PepperSoupSpice-100g-2.jpg",
-      "/spices/Paprika-PepperSoupSpice-100g.jpg",
-      "/spices/Paprika-Seafood-Peppersoup-Bayleaf-Coriander-Curry-100g.jpg",
-      "/spices/Paprika-PeppersoupSpice-100g-2.jpg",
+      "/spices/spices-main/PeppersoupSpice.png",
       "/spices/PepperSoupSpice-100g-2.jpg",
-      "/spices/PepperSoupSpice-100g-3.jpg",
       "/spices/PepperSoupSpice-100g-4.jpg",
-      "/spices/PepperSoupSpice-100g-7.jpg",
+      "/spices/PepperSoupSpice-100g-3.jpg",
       "/spices/PepperSoupSpice-100g-13.jpg",
-      "/spices/PepperSoupSpice-100g-edited.png",
-      "/spices/PepperSoupSpice-100g-transparentbg.png"
     ],
     description: "Spicy pepper soup spice blend with authentic Nigerian flavors. Perfect for traditional pepper soup.",
     origin: "Nigeria",
@@ -315,7 +326,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl text-orange-900 mb-4">
-                Why Choose AfriSpice?
+                Why Choose RichJoash?
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 We're committed to bringing you the most authentic African spices,
