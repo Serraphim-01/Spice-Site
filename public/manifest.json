@@ -3,19 +3,24 @@
   "name": "Spice Site - Premium Quality Spices",
   "icons": [
     {
-      "src": "/spice-site-social-preview.jpg",
-      "sizes": "1200x630",
-      "type": "image/jpeg"
+      "src": "/logo/LOGO-1-removebg.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "/spices/All-Spices.jpg",
-      "sizes": "2948x2948",
-      "type": "image/jpeg"
+      "src": "/logo/LOGO-1-removebg.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#ffffff",
+  "theme_color": "#F97316",
   "background_color": "#ffffff",
-  "description": "Discover our premium collection of spices and seasonings. Enhance your culinary creations with our carefully sourced, high-quality spices."
+  "description": "Discover our premium collection of spices and seasonings. Enhance your culinary creations with our carefully sourced, high-quality spices.",
+  "categories": ["shopping", "food", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
 }
