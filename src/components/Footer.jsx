@@ -1,4 +1,11 @@
-import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+} from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,19 +14,43 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <img 
-              src="/logo/LOGO-2-removebg.png" 
-              alt="Rich&Josh Logo" 
+            <img
+              src="/logo/LOGO-2-removebg.png"
+              alt="Rich&Josh Logo"
               className="h-20 w-auto"
             />
             <p className="text-orange-100 text-sm leading-relaxed">
               Bringing you the authentic taste of Africa through premium,
-              natural spices sourced directly from local farmers across the continent.
+              natural spices sourced directly from local farmers across the
+              continent.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-orange-300 hover:text-white cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 text-orange-300 hover:text-white cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 text-orange-300 hover:text-white cursor-pointer transition-colors" />
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5 text-orange-300 hover:text-white transition-colors" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/richandjoshspices/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 text-orange-300 hover:text-white transition-colors" />
+              </a>
+
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5 text-orange-300 hover:text-white transition-colors" />
+              </a>
             </div>
           </div>
 
@@ -27,16 +58,28 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-orange-300">Quick Links</h4>
             <div className="space-y-2 text-sm">
-              <a href="#home" className="block text-orange-100 hover:text-white transition-colors">
+              <a
+                href="#home"
+                className="block text-orange-100 hover:text-white transition-colors"
+              >
                 Home
               </a>
-              <a href="#products" className="block text-orange-100 hover:text-white transition-colors">
+              <a
+                href="#products"
+                className="block text-orange-100 hover:text-white transition-colors"
+              >
                 Products
               </a>
-              <a href="#about" className="block text-orange-100 hover:text-white transition-colors">
+              <a
+                href="#about"
+                className="block text-orange-100 hover:text-white transition-colors"
+              >
                 About Us
               </a>
-              <a href="#contact" className="block text-orange-100 hover:text-white transition-colors">
+              <a
+                href="#contact"
+                className="block text-orange-100 hover:text-white transition-colors"
+              >
                 Contact
               </a>
             </div>
@@ -52,12 +95,15 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-orange-300" />
-                <span className="text-orange-100">richjoshspices@gmail.com</span>
+                <span className="text-orange-100">
+                  richjoshspices@gmail.com
+                </span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-orange-300 mt-0.5" />
                 <span className="text-orange-100">
-                  27 Church Street, Onipanu<br />
+                  27 Church Street, Onipanu
+                  <br />
                   Lagos, Nigeria
                 </span>
               </div>
