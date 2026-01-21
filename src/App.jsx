@@ -180,8 +180,8 @@ const sampleProducts = [
   },
   {
     id: "11",
-    name: "100g Herb Mix",
-    price: 10000,
+    name: "Savor Package",
+    price: 14400,
     image: "/spices/spices-main/BigSpices.png",
     images: [
       "/spices/spices-main/BigSpices.png",
@@ -196,8 +196,8 @@ const sampleProducts = [
   },
   {
     id: "14",
-    name: "All Herb Mix",
-    price: 2700,
+    name: "Kitchen Master",
+    price: 30900,
     image: "/spices/spices-main/AllSpices.png",
     images: [
       "/spices/spices-main/AllSpices.png",
@@ -211,8 +211,8 @@ const sampleProducts = [
   },
   {
     id: "13",
-    name: "70g Herb Mix",
-    price: 2700,
+    name: "Daily Use Package",
+    price: 13500,
     image: "/spices/spices-main/SmallSpices.png",
     images: [
       "/spices/spices-main/SmallSpices.png",
@@ -326,7 +326,7 @@ export default function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl text-orange-900 mb-4">
-                Why Choose RichJoash?
+                Why Choose Rich&Josh?
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 We're committed to bringing you the most authentic African spices,

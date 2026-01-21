@@ -13,7 +13,7 @@ export function Header({ cartItemCount, onCartClick }) {
           <div className="flex items-center">
             <img 
               src="/logo/LOGO-1-removebg.png" 
-              alt="RichJoash Logo" 
+              alt="Rich&Josh Logo" 
               className="h-16 w-auto"
             />
           </div>

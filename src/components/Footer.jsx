@@ -9,7 +9,7 @@ export function Footer() {
           <div className="space-y-4">
             <img 
               src="/logo/LOGO-2-removebg.png" 
-              alt="RichJoash Logo" 
+              alt="Rich&Josh Logo" 
               className="h-20 w-auto"
             />
             <p className="text-orange-100 text-sm leading-relaxed">
@@ -42,41 +42,22 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Customer Care */}
-          <div className="space-y-4">
-            <h4 className="text-orange-300">Customer Care</h4>
-            <div className="space-y-2 text-sm">
-              <a href="#" className="block text-orange-100 hover:text-white transition-colors">
-                Shipping Info
-              </a>
-              <a href="#" className="block text-orange-100 hover:text-white transition-colors">
-                Return Policy
-              </a>
-              <a href="#" className="block text-orange-100 hover:text-white transition-colors">
-                FAQ
-              </a>
-              <a href="#" className="block text-orange-100 hover:text-white transition-colors">
-                Track Order
-              </a>
-            </div>
-          </div>
-
           {/* Contact Info */}
           <div className="space-y-4">
             <h4 className="text-orange-300">Contact Us</h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-orange-300" />
-                <span className="text-orange-100">+234 (0) 123 456 7890</span>
+                <span className="text-orange-100">+234 813 3631 762</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-orange-300" />
-                <span className="text-orange-100">hello@richjoash.com</span>
+                <span className="text-orange-100">richjoshspices@gmail.com</span>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 text-orange-300 mt-0.5" />
                 <span className="text-orange-100">
-                  123 Spice Street,<br />
+                  27 Church Street, Onipanu<br />
                   Lagos, Nigeria
                 </span>
               </div>
@@ -86,11 +67,11 @@ export function Footer() {
 
         <div className="border-t border-orange-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-orange-200">
-            <p>&copy; 2024 RichJoash. All rights reserved.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
+            <p>&copy; 2024 Rich&Josh. All rights reserved.</p>
+            {/* <div className="flex gap-6 mt-4 md:mt-0">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

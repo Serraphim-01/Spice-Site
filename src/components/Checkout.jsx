@@ -32,7 +32,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
 
   const sendOrderToWhatsApp = (orderData) => {
     // Format the order details for WhatsApp message
-    let message = `*New Order from RichJoash*\n\n`;
+    let message = `*New Order from Rich&Josh*\n\n`;
     message += `*Customer Details:*\n`;
     message += `Name: ${orderData.firstName} ${orderData.lastName}\n`;
     message += `Email: ${orderData.email}\n`;
@@ -288,7 +288,7 @@ export function Checkout({ isOpen, onClose, cartItems, total, onOrderComplete })
                   <div className="mt-4 p-4 bg-orange-50 rounded-lg">
                     <h4 className="text-sm mb-2">Opay Transfer Details:</h4>
                     <div className="space-y-1 text-sm text-gray-700">
-                      <p><strong>Account Name:</strong> RichJoash Limited</p>
+                      <p><strong>Account Name:</strong> Rich&Josh Limited</p>
                       <p><strong>Account Number:</strong> 7012345678</p>
                       <p><strong>Bank:</strong> Opay</p>
                       <p><strong>Amount:</strong> ₦{total.toLocaleString()}</p>
