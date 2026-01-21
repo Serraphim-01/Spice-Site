@@ -1,51 +1,58 @@
 import { useState, useEffect, useRef } from "react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useDrag } from "@use-gesture/react";
 
 export function ImageSlider({ images, alt, className }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [loadedImages, setLoadedImages] = useState({});
+  const [loadingStates, setLoadingStates] = useState({});
   const sliderRef = useRef(null);
 
   // Preload images with low-quality placeholders
   useEffect(() => {
     const preloadImages = async () => {
       const loadedStatus = {};
+      const loadingStatus = {};
       
       for (const imgSrc of images) {
         if (!imgSrc) continue; // Skip if src is null/undefined/empty
         
         try {
-          // Check if we already have a cached high-res version
-          if (!loadedStatus[imgSrc]) {
-            const img = new Image();
-            img.src = imgSrc;
-            
-            img.onload = () => {
-              loadedStatus[imgSrc] = true;
-              setLoadedImages(prev => ({ ...prev, [imgSrc]: true }));
-            };
-          }
+          // Mark as loading initially
+          loadingStatus[imgSrc] = true;
+          setLoadingStates(prev => ({ ...prev, [imgSrc]: true }));
+          
+          const img = new Image();
+          img.src = imgSrc;
+          
+          img.onload = () => {
+            loadedStatus[imgSrc] = true;
+            loadingStatus[imgSrc] = false;
+            setLoadedImages(prev => ({ ...prev, [imgSrc]: true }));
+            setLoadingStates(prev => ({ ...prev, [imgSrc]: false }));
+          };
+          
+          img.onerror = () => {
+            loadingStatus[imgSrc] = false;
+            setLoadingStates(prev => ({ ...prev, [imgSrc]: false }));
+          };
         } catch (error) {
           console.warn(`Failed to preload image: ${imgSrc}`, error);
+          setLoadingStates(prev => ({ ...prev, [imgSrc]: false }));
         }
       }
     };
 
     if (images && images.length > 0) {
       preloadImages();
+    } else {
+      // Reset loading states if no images
+      setLoadingStates({});
+      setLoadedImages({});
     }
   }, [images]);
 
-  // Auto-advance slides every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, [images.length]);
+  
 
   const goToPrevious = () => {
     setCurrentIndex((prevIndex) => 
@@ -63,25 +70,7 @@ export function ImageSlider({ images, alt, className }) {
     setCurrentIndex(index);
   };
 
-  // Setup swipe/drag gesture
-  const bind = useDrag(({ offset: [x], event, movement: [mx] }) => {
-    // Calculate the distance threshold for a swipe
-    const minSwipeDistance = 100; // Increased threshold for better UX
-    
-    if (mx < -minSwipeDistance) {
-      // Swipe left - go to next
-      goToNext();
-    } else if (mx > minSwipeDistance) {
-      // Swipe right - go to previous
-      goToPrevious();
-    }
-  }, {
-    from: () => [0, 0],
-    filterTaps: true,
-    bounds: { left: -100, right: 100 },
-    rubberband: true,
-    pointer: { touch: true }, // Enable touch events specifically
-  });
+
 
   if (!images || images.length === 0) {
     return (
@@ -96,9 +85,7 @@ export function ImageSlider({ images, alt, className }) {
   return (
     <div 
       className="relative w-full h-full" 
-      ref={sliderRef} 
-      {...bind()}
-      style={{ touchAction: 'none' }} // Fix for swipe gesture on mobile
+      ref={sliderRef}
     >
       {/* Main image */}
       <div className="relative w-full h-full overflow-hidden rounded-lg">
@@ -106,9 +93,8 @@ export function ImageSlider({ images, alt, className }) {
           src={images[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
           className={className}
-          // Add loading="lazy" and blur-up effect
           style={{
-            filter: images[currentIndex] && !loadedImages[images[currentIndex]] ? 'blur(5px)' : 'none',
+            filter: images[currentIndex] && loadingStates[images[currentIndex]] ? 'blur(5px)' : 'none',
             transition: 'filter 0.3s ease'
           }}
         />
@@ -119,14 +105,14 @@ export function ImageSlider({ images, alt, className }) {
         <>
           <button
             onClick={goToPrevious}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1 rounded-full transition-colors md:block hidden"
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors z-10"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1 rounded-full transition-colors md:block hidden"
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors z-10"
             aria-label="Next image"
           >
             <ChevronRight className="h-5 w-5" />

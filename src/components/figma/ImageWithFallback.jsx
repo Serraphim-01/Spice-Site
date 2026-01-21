@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 const ERROR_IMG_SRC =
   'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==';
 
-// Simple blur hash generator for low-quality placeholders
+// Generate a low-quality placeholder SVG based on image dimensions or color
 const generateLowQualityPlaceholder = (src) => {
-  // Create a small base64 encoded image that serves as a placeholder
-  // In a real implementation, you'd want to use actual blur hash or low-res versions
-  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='100%25' height='100%25' fill='%23f0f0f0'/%3E%3C/svg%3E`;
+  // Create a small base64 encoded SVG that serves as a colored placeholder
+  // This gives a general idea of the image without loading the full image
+  const colors = ['#f0f0f0', '#e0e0e0', '#d0d0d0', '#f5f5f5'];
+  const randomColor = colors[Math.floor(Math.random() * colors.length)];
+  
+  return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='100%25' height='100%25' fill='${encodeURIComponent(randomColor)}'/%3E%3C/svg%3E`;
 };
 
 export function ImageWithFallback(props) {
@@ -61,7 +64,7 @@ export function ImageWithFallback(props) {
     <img 
       src={isLoading && lowQualitySrc ? lowQualitySrc : imageSrc} 
       alt={alt} 
-      className={`${className} ${(isLoading && lowQualitySrc) ? 'blur-sm scale-105' : 'blur-0 scale-100'} transition-all duration-300`}
+      className={`${className} ${isLoading ? 'blur-sm scale-105' : 'blur-0 scale-100'} transition-all duration-300`}
       style={style} 
       {...rest} 
       onError={handleError} 
